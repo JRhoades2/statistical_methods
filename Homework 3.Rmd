@@ -1,0 +1,335 @@
+---
+title: "Homework 3"
+author: "Jordan Rhoades"
+date: "Due 2/18/2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(UsingR)
+library(MASS)
+```
+
+Instructions: Complete the following problems using RMarkdown to render a Microsoft Word document. Include code in the space provided. If a direct question is asked, answer that question below the code input for that problem. 
+
+***
+
+## Problem 1
+
+a. Verify that the table below is a probability model.
+
+| Color  | Probability |
+|--------|------------:|
+| Red    |        0.30 |
+| Green  |        0.15 |
+| Blue   |        0.00 |
+| Brown  |        0.15 |
+| Yellow |        0.20 |
+| Orange |        0.20 |
+
+## if we add up all the probabilities we get: it comes out to being 1 which is good
+## each probability is greater than or equal to 0 and less than or equal to 1
+
+b. What do we call the outcome "blue"?
+## The event is impossible!
+
+
+## Problem 2
+
+A survey of 500 randomly selected high school students determined that 288 played organized sports.
+
+a. What is the probability that a randomly selected high school student plays organized sports?
+
+```{r}
+p1 <- 288/500
+sprintf("The proability that a randomly selected high school student plays organized sports is %f.",p1)
+```
+
+b. Interpret this probability.
+## We get that there is a 57.6% chance that you would randomly select a high school student who plays in organized sports.
+
+
+## Problem 3
+
+The following probability model shows the distribution of murders by type of weapon for murder cases in 2013.
+
+| Weapon             | Probability |
+|--------------------|------------:|
+| Handgun            |       0.472 |
+| Rifle              |       0.023 |
+| Shotgun            |       0.025 |
+| Unknown firearm    |       0.170 |
+| Knives             |       0.122 |
+| Hands, fists, etc. |       0.056 |
+| Other              |       0.132 |
+
+a.  What is the probability that a randomly selected murder resulted from a rifle or a shotgun?
+
+```{r}
+.023+.025
+print("The probability is 0.048.")
+```
+
+b.  What is the probability that a randomly selected a murder resulted from a firearm (handgun, rifle, shotgun, or unknown firearm)?
+
+```{r}
+.472+.023+.025+.170
+print("The probability is 0.69.")
+```
+
+c.  What is the probability that a randomly selected murder resulted from a weapon other than a firearm?
+
+```{r}
+.122+.056+.132
+print("The probability is 0.31.")
+```
+
+d. Are murders with a shotgun unusual?
+## It's a low percentage, so I would say that it would be unusual.
+
+
+## Problem 4
+
+Suppose a single card is randomly selected from a standard deck of cards.
+
+a.  Compute the probability of randomly selecting a two or three from the deck.
+## 8/52 = 0.1538462
+
+b.  Compute the probability of randomly selecting a heart or a club from the deck.
+## 2/4 = .5
+
+c.  Compute the probability of randomly selecting an ace or a heart from the deck.
+## 16/52 = .3076923
+
+## Problem 5
+
+Exclude leap years from the following calculations:
+ 
+a.   Compute the probability that a randomly selected person it does not have a birthday on November 8.
+## 1- 1/365 = .9972603
+
+b.   Compute the probability that a randomly selected person does not have a birthday on the first day of a month.
+## 1 - 12/365 = .9671233
+
+c.   Compute the probability that a randomly selected person does not have a birthday on the 31st day of a month.
+## 1 - 7/365 = .9808219
+
+d.   Compute the probability that a randomly selected person was born in April.
+## 1 - 30/365 = .9178082
+
+## Problem 6
+
+According to the U.S. Census Bureau, the probability that a randomly selected worker primarily drives a car to work is 0.867. The probability that a randomly selected worker primarily takes public transportation to work is 0.048.
+
+a.  What is the probability that a randomly selected worker primarily drives a car or take public transportation to work?
+
+```{r}
+.867 + .048
+print("The probability is 0.915.")
+```
+
+b.   What is the probability that a randomly selected worker neither drives a car nor takes public transportation to work?
+
+```{r}
+1 - .915
+print("The probability is 0.085.")
+```
+
+c.   What is the probability a randomly selected worker does not drive a car to work?
+
+```{r}
+.048 + .085
+print("The probability is 0.133.")
+```
+
+d.   Can the probability that I randomly selected worker walks to work equal 0.15? Why or why not?
+## No because that would mean it breaks the rules of probablilty. Adding all the probabilities would be over 1.
+
+## Problem 7
+
+According to the national vital statistics report, 20.1% of all pregnancies results in weight gain in access of 40 pounds (for singleton births).  In addition, 49.5% of all pregnancies results in the birth of a baby girl.  Assuming gender and weight gain are independent, what is the probability a randomly selected pregnancy results in a girl and weight gain in access of 40 pounds?
+
+```{r}
+.201*.495
+print("The probabiliy is 0.099495.")
+```
+
+## Problem 8
+
+Christmas lights are often designed with a series circuit. This means that when one light bulb burns out the entire string of lights goes black. Suppose that the lights are designed so that the probability of a bulb will last two years is 0.995. The success or failure of one bulb is independent of the success or failure of other bulbs.
+
+a.  What is the probability that a string of 100 lights will still be burning in two years?
+
+```{r}
+(.995)^100
+print("The probability is 0.6057704.")
+```
+
+b.  What is the probability that at least one bulb will burn out in two years?
+
+```{r}
+1 - (.995)^100
+print("The probability is 0.3942296.")
+```
+
+## Problem 9
+
+Suppose that Ralph gets a strike bowling 30% of the time.
+
+a.  What is the probability that Ralph gets a double (two strikes in a row)?
+
+```{r}
+(.30)*(.30)
+print("The probabilitys is 0.09.")
+```
+
+b.  What is the probability that Ralph gets a turkey (three strikes in a row)?
+
+```{r}
+(.3)*(.3)*(.3)
+print("The probability is 0.027.")
+```
+
+c.  What is the probability that Ralph pulls a perfect game (13 strikes in a row)?
+
+```{r}
+(.3)^(13)
+print("The probability is 1.594323e-07.")
+```
+
+d.  When events are independent, their complements are independent as well. Use this result to determine the probability that Ralph gets a turkey but fails to get a clover (four strikes in a row).
+
+```{r}
+((.3)^3)*.7
+print("The probability is 0.0189.")
+```
+
+## Problem 10
+
+For the month of June in the city of Chicago, 37% of the days are cloudy. Also in the month of June in the city of Chicago, 21% of the days are cloudy and rainy. What is the probability that a randomly selected day in June will be rainy if it is cloudy?
+
+```{r}
+.21/.37
+print("The probability is 0.5675676")
+```
+
+## Problem 11
+
+Adult Americans 18 years or older were asked whether they used social media regularly. The following table is based on the results of the survey.
+
+|                         | 18-34 | 35-44 | 45-54 | 55+ | Total |
+|-------------------------|-------|-------|-------|-----|-------|
+| Use social media        |   117 |    89 |    83 |  49 |   338 |
+| Do not use social media |    33 |    36 |    57 |  66 |   192 |
+| Total                   |   150 |   125 |   140 | 115 |   530 |
+ 
+a.   What is the probability that a randomly selected adult American uses social media, given the individual is 18 to 34 years of age?
+
+```{r}
+117/(150)
+print("The probability is 0.78.")
+```
+
+b.   What is the probability that a randomly selected adult Americans is 18 to 34 years of age, given the individual uses the social media? 
+
+```{r}
+117/(338)
+print("The probability is 0.3461538.")
+```
+
+c. Are 18- to 34-year-olds more likely to use social media then individuals in general? Why?
+
+```{r}
+#1 - (117/338)
+## No, because the probability for a 18-34 years olds is just 34.6% and that leaves other individuals that make up the other 65.3% so you could say that the "others"" are more likely to use social media.
+```
+
+## Problem 12
+
+Suppose that you just received a shipment of six televisions and two are defective. If two televisions are randomly selected, 
+
+a. Compute the probability that both televisions work.
+
+```{r}
+(4/6)*(3/5)
+print("The probability is 0.4.")
+```
+
+b. What is the probability that at least one does not work?
+
+```{r}
+1 - .4
+print("The probability is 0.6.")
+```
+
+## Problem 13
+
+Suppose that two cards are randomly selected from a standard 52-card deck.
+
+a. What is the probability that the first card is a king and the second card is a king if the sampling is done without replacement?
+
+```{r}
+(4/52)*(3/51)
+print("The probability is 0.004524887.")
+```
+
+b.  What is the probability that the first card is a king and the second card is a king if the sampling is done with replacement?
+
+```{r}
+(4/52)*(4/52)
+print("The probability is 0.00591716.")
+```
+
+## Problem 14
+
+Compute the probability that at least two people in a room of 21 people share the same birthday, ignoring leap years and assuming each birthday is equally likely.
+
+```{r}
+prod(1 - 0:20/365)
+print("The probability is 0.5563117.")
+```
+
+## Problem 15
+
+In how many ways can three men and three women be seated around a circular table assuming that women and men must alternate seats?
+
+```{r}
+2*factorial(3)*factorial(3)
+print("The are 72 number of ways.")
+```
+
+## Problem 16
+
+In the game Text Twist, six letters are given and the player must form words of varying links using the letters provided. Suppose that the letters in that particular game are ENHSIC.
+
+a. How many different arrangements are possible using all 6 letters?
+
+```{r}
+factorial(6)
+print("There are 720 different arrangements.")
+```
+
+b. How many different arrangements are possible using only 4 letters?
+
+```{r}
+factorial(6)/(factorial(4)*factorial(6-4))
+print("There are 15 different arrangements.")
+```
+
+c. The solution to this game has three 6-letter words. To advance to the next round, the player needs at least one of the 6-letter words. If the player simply guesses, what its the probability that he or she will get one of the 6-letter words on their first guess of six letters?
+
+```{r}
+3/(factorial(6))
+print("The probability is 0.004166667.")
+```
+
+## Problem 17
+
+A family has eight children. If this family has exactly three boys, how many different birth and gender orders are possible?
+
+```{r}
+(factorial(8)/(factorial(3)*factorial(8-3)))
+print("There are 56 different possibly orders.")
+```
+
